@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <link rel="stylesheet" href="../css/comon0.css">
+
+</head>
+
+<script>
+    $(window).load(function () {
+        $(".loading").fadeOut()
+    })
+
+    /****/
+    $(document).ready(function () {
+        var whei = $(window).width()
+        $("html").css({
+            fontSize: whei / 20
+        })
+        $(window).resize(function () {
+            var whei = $(window).width()
+            $("html").css({
+                fontSize: whei / 20
+            })
+        });
+    });
+</script>
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="..js/swiper-6.4.15/swiper-master/package/swiper-bundle.min.css">
+<script type="text/javascript" src="../js/echarts.min.js"></script>
+<!-- <script type="text/javascript" src="js/echarts.all.js"></script> -->
+  <!-- Swiper JS -->
+<script src="..js/swiper-6.4.15/swiper-master/package/swiper-bundle.min.js"></script>   
+
+<script language="JavaScript" src="../js/js2.js"></script>
+<script src="../js/autoPlay.js"></script>
+
+<body>
+    <div class="canvas" style="opacity: .2">
+        <iframe frameborder="0" src="../js/index.html" style="width: 100%; height: 100%"></iframe>
+    </div>
+    <div class="loading">
+        <div class="loadbox"> <img src="../picture/loading.gif"> 页面加载中... </div>
+    </div>
+    <div class="head">
+        <div class="head-ullist">
+            <ul>
+                <li class="data">
+                    <img src="../images/titleborder.png" alt="" style="width:320px;height:100px;">
+                    <span class="head-ullist-span"> 数据资产总览
+                    </span>
+
+                </li>
+                <li class="economy">
+                    <img src="../images/titleborder.png" alt="" style="width:320px;height:100px;">
+                    <span class="head-ullist-span"> 宏观经济总览 </span>
+                </li>
+                <li class="active industry">
+                    <img src="../images/bgc2.png" alt="" style="width:320px;height:100px;">
+                    <span class="head-ullist-span"> 工业经济监测
+                    </span>
+                </li>
+                <li class="industry-overview">
+                    <img src="../images/titleborder.png" alt="" style="width:320px;height:100px;">
+                    <span class="head-ullist-span">产业总览
+                    </span>
+                </li>
+                <li class="project">
+                  <img src="../images/titleborder.png" alt="" style="width:320px;height:100px;">
+                  <span class="head-ullist-span"> 项目总览
+                  </span>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="head-title">
+            <img src="../images/title.png" alt="" srcset="">
+        </div>
+
+
+        <div class="weather">
+            <img src="../images/time.png" style="width: 1269.7px;height: 268px;" alt="">
+            <span id="showTime"></span>
+            <span style="position: absolute;right: -100px;top: 60px;" id="weekdays">星期二</span>
+
+        </div>
+
+
+        <script>
+            var t = null;
+            t = setTimeout(time, 1000); //開始运行
+            function time() {
+                clearTimeout(t); //清除定时器
+                date = new Date();
+                var YY = date.getFullYear();
+                var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+                var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+                var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours());
+                var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
+                var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+                document.getElementById("showTime").innerHTML = YY + "/" + MM + "/" + DD + "</br>" + hh + ":" + mm +
+                    ":" + ss;
+                t = setTimeout(time, 1000); //设定定时器，循环运行  
+                var days = date.getDay();
+                switch (days) {
+                    case 1:
+                        days = '星期一';
+                        break;
+                    case 2:
+                        days = '星期二';
+                        break;
+                    case 3:
+                        days = '星期三';
+                        break;
+                    case 4:
+                        days = '星期四';
+                        break;
+                    case 5:
+                        days = '星期五';
+                        break;
+                    case 6:
+                        days = '星期六';
+                        break;
+                    case 0:
+                        days = '星期日';
+                        break;
+
+
+                }
+                document.querySelector('#weekdays').innerHTML = days;
+            }
+        </script>
+
+
+
+    </div>
+    <div class="mainbox">
+        <ul class="clearfix">
+            <li style="width:32%">
+                <div class="boxall" style="height: 260px;">
+                    <div style="margin-top: 10px;">
+                        <div class="boxall-title-info boxall-title-info1">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                1-12月工业增加值增速
+                            </div>
+                            <div class="box-all-cont">
+                                2.4%
+                            </div>
+                            <div
+                                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                                全国排名第 <span style="color: yellow;">18</span>位</div>
+                        </div>
+                        <div class="boxall-title-info boxall-title-info2">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                12-12月工业投资增速</div>
+                            <div class="box-all-cont">
+                                5.4%
+                            </div>
+                            <div
+                                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+
+                            </div>
+                        </div>
+                        <div class="boxall-title-info boxall-title-info3">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                1-12月工业企业营业收入增速</div>
+                            <div class="box-all-cont">
+                                -0.1%
+                            </div>
+                            <div
+                                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                                全国排名第 <span style="color: yellow;">18</span>位</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="boxall clearfix" style="height: 730px;width: 48%;margin-bottom: 1vh;">
+                        <div class="alltitle">
+                            <div class="block-bg">
+                            </div> 云南省工业增加值
+                        </div>
+                        <div class="allnav allnav2" id="echart1"></div>
+                    </div>
+                    <div class="allnav" id="echart21"></div>
+                    <div class="boxall clearfix" style="height: 730px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg"></div>
+                            工业增加值增速对比
+                        </div>
+                        <div class="allnav allnav2" id="echart2"></div>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="boxall clearfix" style="height: 730px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg">
+                            </div> 云南省工业投资增速
+                        </div>
+                        <div class="allnav" id="echart3" style="margin-bottom: 100px;"></div>
+                        <div class="boxfoot">
+
+                        </div>
+                    </div>
+                    <div class="boxall clearfix" style="height: 730px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg"></div>
+                            云南省工业企业效益
+                        </div>
+                        <div class="allnav" id="echart4"></div>
+                        <div class="boxfoot">
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div style="color: #fff;font-size: 1.6vw;font-weight: 800;margin-left: 3vw;">云南省工业经济地图
+
+                </div>
+
+                <div class="map">
+
+                    <div style="margin:auto; color:#fff;position: absolute;top:1vh;left: 3vw;font-size: 50px;">
+                        <div style="width:60px;height:30px;background:#B3DEF1;display: inline-block;"></div> 1-12月工业增加值增速
+                    </div>
+                    <div class="map1"><img src="../picture/lbx.png"></div>
+                    <div class="map2"><img src="../picture/jt.png"></div>
+                    <div class="map3">
+                        <img style="width: 1480px;margin-left: -100px;	transform: scale(1.6);opacity: 0.3;"
+                            src="../picture/map.png">
+                    </div>
+                    <div class="map4" id="map_1"></div>
+
+                </div>
+            </li>
+            <li style="width:36%">
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="boxall clearfix" style="height: 730px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg">
+                            </div>云南省工业三大门类增长
+                        </div>
+                        <div class="allnav" id="fb1"></div>
+                        <div class="boxfoot">
+
+                        </div>
+                    </div>
+                    <div class="boxall clearfix" style="height: 730px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg"></div>
+                            云南省工业PPI
+                        </div>
+                        <div class="allnav" id="fb2"></div>
+                        <div class="boxfoot">
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="boxall boxall-exp clearfix" style="height: 1060px;    width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg">
+                            </div> 云南省工业企业数量
+                        </div>
+                        <div class="allnav" id="fb3"></div>
+                        <div class="boxfoot">
+
+                        </div>
+                    </div>
+                    <div class="boxall boxall-exp clearfix" style="height: 1060px;overflow: hidden;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg"></div>
+                            云南省主要工业产品产量
+                        </div>
+                        <div>
+                            <ul class="myul" style="width: 100%;">
+                                <li>产品名称</li>
+                                <!-- <li>计量单位</li> -->
+                                <li>本月止累计</li>
+                                <li>同比增长(%)</li>
+                            </ul>
+                        </div>
+                        <div class="allnav setscrollbox scroll" id="fb4">
+                            <table rules=none>
+                                <tbody class="settbody">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="boxfoot">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="back"></div>
+
+        <script type="text/javascript" src="../js/china.js"></script>
+        <script type="text/javascript" src="../js/area_echarts.js"></script>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/i5scroll.js"></script>
+        <script>
+            $.ajax({
+                type: "GET",
+                url: "http://139.9.150.10:9876/dv/bigScreen/getTargetData",
+                success: function (res) {
+                    $(".boxall-title-info1 .boxall-title-info-title").html(res.data[0].targetName);
+                    $(".boxall-title-info1 .box-all-cont").html(res.data[0].value);
+                    $(".boxall-title-info2 .boxall-title-info-title").html(res.data[1].targetName);
+                    $(".boxall-title-info1 .box-all-cont").html(res.data[1].value);
+                    $(".boxall-title-info3 .boxall-title-info-title").html(res.data[2].targetName);
+                    $(".boxall-title-info1 .box-all-cont").html(res.data[2].value);
+
+
+                }
+            });
+        </script>
+        <script>
+            $(".scroll").i5Scroll();
+        </script>
+</body>
+
+</html>

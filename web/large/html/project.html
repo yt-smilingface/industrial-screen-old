@@ -1,0 +1,603 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <link rel="stylesheet" href="../css/comon0.css">
+
+</head>
+<style type="text/css">
+    .bbd-settbody *,
+    .bbd-table * {
+        box-sizing: border-box;
+    }
+    .bbd-table td {
+        padding: 7px 0;
+    }
+    .bbd-settbody .container,
+    .bbd-table .container {
+      width: 100%;
+      /*background-color: #ddd;*/
+    }
+    .settbody .skills,
+    .bbd-table .skills {
+      text-align: left;
+      line-height: 28px;
+      color: white;
+      /*background-image: linear-gradient(to right, #83bff6, #188df0, #188df0);*/
+      background-image: linear-gradient(to right, #188df0, #188df0, #83bff6);
+    }
+    .settbody td {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        height: 48px;
+    }
+</style>
+<script>
+    $(window).load(function () {
+        $(".loading").fadeOut()
+    })
+
+    /****/
+    $(document).ready(function () {
+        var whei = $(window).width()
+        $("html").css({
+            fontSize: whei / 20
+        })
+        $(window).resize(function () {
+            var whei = $(window).width()
+            $("html").css({
+                fontSize: whei / 20
+            })
+        });
+    });
+</script>
+<script type="text/javascript" src="../js/echarts.min.js"></script>
+<link rel="stylesheet" href="../js/swiper-6.4.15/swiper-master/package/swiper-bundle.min.css">
+<script src="../js/swiper-6.4.15/swiper-master/package/swiper-bundle.min.js"></script>   
+
+<script language="JavaScript" src="../js/js5.js"></script>
+<script src="../js/autoPlay.js"></script>
+
+<body>
+    <div class="canvas" style="opacity: .2">
+        <iframe frameborder="0" src="../js/index.html" style="width: 100%; height: 100%"></iframe>
+    </div>
+    <div class="loading">
+        <div class="loadbox"> <img src="../picture/loading.gif"> 页面加载中... </div>
+    </div>
+    <div class="head">
+        <div class="head-ullist">
+            <ul>
+                <li class="data">
+                    <img src="../images/titleborder.png" alt="" style="width:320px;height:100px;">
+                    <span class="head-ullist-span"> 数据资产总览
+                    </span>
+
+                </li>
+                <li class="economy">
+                    <img src="../images/titleborder.png" alt="" style="width:320px;height:100px;">
+                    <span class="head-ullist-span"> 宏观经济总览 </span>
+                </li>
+                <li class="industry">
+                    <img src="../images/titleborder.png" alt="" style="width:320px;height:100px;">
+                    <span class="head-ullist-span"> 工业经济监测
+                    </span>
+                </li>
+                <li class="industry-overview">
+                    <img src="../images/titleborder.png" alt="" style="width:320px;height:100px;">
+                    <span class="head-ullist-span"> 产业总览
+                    </span>
+                </li>
+                <li class="active project">
+                  <img src="../images/bgc2.png" alt="" style="width:320px;height:100px;"> 
+                  <span class="head-ullist-span"> 项目总览
+                  </span>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="head-title">
+            <img src="../images/title.png" alt="" srcset="">
+        </div>
+
+
+        <div class="weather">
+            <img src="../images/time.png" style="width: 1269.7px;height: 268px;" alt="">
+            <span id="showTime"></span>
+            <span style="position: absolute;right: -100px;top: 60px;" id="weekdays">星期二</span>
+
+        </div>
+
+
+        <script>
+            var t = null;
+            t = setTimeout(time, 1000); //開始运行
+            function time() {
+                clearTimeout(t); //清除定时器
+                date = new Date();
+                var YY = date.getFullYear();
+                var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+                var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+                var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours());
+                var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
+                var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+                document.getElementById("showTime").innerHTML = YY + "/" + MM + "/" + DD + "</br>" + hh + ":" + mm +
+                    ":" + ss;
+                t = setTimeout(time, 1000); //设定定时器，循环运行  
+                var days = date.getDay();
+                switch (days) {
+                    case 1:
+                        days = '星期一';
+                        break;
+                    case 2:
+                        days = '星期二';
+                        break;
+                    case 3:
+                        days = '星期三';
+                        break;
+                    case 4:
+                        days = '星期四';
+                        break;
+                    case 5:
+                        days = '星期五';
+                        break;
+                    case 6:
+                        days = '星期六';
+                        break;
+                    case 0:
+                        days = '星期日';
+                        break;
+
+
+                }
+                document.querySelector('#weekdays').innerHTML = days;
+            }
+        </script>
+
+
+
+    </div>
+    <div class="mainbox">
+        <ul class="clearfix">
+            <li style="width:32%">
+<!--                 <div class="boxall" style="height: 260px;">
+                    <div style="margin-top: 10px;">
+                        <div class="boxall-title-info boxall-title-info1">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                1-9月工业增加值增速
+                            </div>
+                            <div class="box-all-cont">
+                                0.9%
+                            </div>
+                            <div
+                                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                                全国排名第 <span style="color: yellow;">25</span>位</div>
+                        </div>
+                        <div class="boxall-title-info boxall-title-info2">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                9月工业投资增速</div>
+                            <div class="box-all-cont">
+
+                                2.8%
+                            </div>
+                            <div
+                                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+
+                            </div>
+                        </div>
+                        <div class="boxall-title-info boxall-title-info3">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                1-9月工业企业营业收入增速</div>
+                            <div class="box-all-cont">
+                                -3.3%
+                            </div>
+                            <div
+                                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                                全国排名第 <span style="color: yellow;">20</span>位</div>
+                        </div>
+                    </div>
+                </div> -->
+                <div style="margin: 36px 0;text-align: center;font-size: 50px;font-weight: bolder;color: #fff;">产业总览</div>
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="boxall clearfix" style="height: 730px;width: 48%;margin-bottom: 1vh;">
+                        <div class="alltitle">
+                            <div class="block-bg">
+                            </div> 各产业企业数量
+                        </div>
+                        <div class="allnav allnav2" id="echart1"></div>
+                    </div>
+                    <div class="allnav" id="echart21"></div>
+                    <div class="boxall clearfix" style="height: 730px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg"></div>
+                            2020年1-12月工业增加值累计值
+                        </div>
+                        <div class="allnav allnav2" id="echart2"></div>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="boxall clearfix" style="height: 930px;width: 100%;">
+                        <div class="alltitle">
+                            <div class="block-bg">
+                            </div> 各州市主要产业
+                        </div>
+                        <!-- <div class="allnav" id="echart3" style="margin-bottom: 100px;"></div> -->
+                        <div class="allnav" style="margin-bottom: 100px;">
+                            <table class="bbd-table">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:20%">州市名称</td>
+                                        <td style="width:20%">主要产业</td>
+                                        <td style="width:60%;text-align: left;">主要产业规模占比</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">昆明</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:22.94%">22.94%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">曲靖</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:46.83%">46.83%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">玉溪</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:28.86%">28.86%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">保山</td>
+                                        <td style="width:20%">食品</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:38.11%">38.11%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">昭通</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:58.09%">58.09%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">丽江</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:53.45%">53.45%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">普洱</td>
+                                        <td style="width:20%">食品</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:30.51%">30.51%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">临沧</td>
+                                        <td style="width:20%">食品</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:47.09%">47.09%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">楚雄</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:31.53%">31.53%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">红河</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:31.34%">31.34%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">文山</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:39.18%">39.18%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">西双版纳</td>
+                                        <td style="width:20%">食品</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:29.91%">29.91%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">大理</td>
+                                        <td style="width:20%">食品</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:34.14%">34.14%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">德宏</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:27.64%">27.64%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">怒江</td>
+                                        <td style="width:20%">原材料</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:57.14%">57.14%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20%">迪庆</td>
+                                        <td style="width:20%">食品</td>
+                                        <td style="width:60%">
+                                            <div class="container">
+                                              <div class="skills" style="width:42.11%">42.11%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="boxfoot">
+
+                        </div>
+                    </div>
+                    <!-- <div class="boxall clearfix" style="height: 730px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg"></div>
+                            云南省工业企业效益
+                        </div>
+                        <div class="allnav" id="echart4"></div>
+                        <div class="boxfoot">
+                        </div>
+                    </div> -->
+                </div>
+            </li>
+            <li style="position: relative;">
+                <!-- /*<div style="color: #fff;font-size: 1.6vw;font-weight: 800;margin-left: 3vw;">云南省工业经济地图 </div>*/ -->
+                <div class="map" style="position: absolute;top:200px;z-index: -1">
+                    <div class="map1"><img src="../picture/lbx.png"></div>
+                    <div class="map2"><img src="../picture/jt.png"></div>
+                    <div class="map3">
+                        <img style="width: 1480px;margin-left: -100px;	transform: scale(1.6);opacity: 0.3;"
+                            src="../picture/map.png">
+                    </div>
+                    <!-- <div class="map4" id="map_1"></div> -->
+
+                </div>
+                <div class="swiper-container" style="height: 1730px;">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">电子信息规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap1"></div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">石化化工规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap2"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">食品规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap3"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">能源规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap4"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">原材料规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap5"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">烟草规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap6"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">交通物流规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap7"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">资源综合利用规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap8"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">装备制造规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap9"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">生物医药规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap10"></div>
+                    </div>
+                      <div class="swiper-slide">
+                        <div style="margin: 36px 0;text-align: center;font-size: 40px;font-weight: bolder;color: #fff;">消费品规上企业分布</div>
+                        <div class="yunnanMap" id="yunnanMap11"></div>
+                    </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>  
+                <style type="text/css">
+                    .yunnanMap {
+                        width: 100%;
+                        height: 8rem;
+                    }
+                </style>
+                <script>
+                    var swiper = new Swiper('.swiper-container', {
+                         autoplay: {
+                            delay: 6000,
+                            stopOnLastSlide: false,
+                            disableOnInteraction: false,
+                        },
+                      pagination: {
+                        el: '.swiper-pagination',
+                        dynamicBullets: true,
+                      },
+                    });
+                  </script>
+
+
+
+            </li>
+            <li style="width:36%">
+                <div style="margin: 36px 0;text-align: center;font-size: 50px;font-weight: bolder;color: #fff;">项目总览</div>
+
+                <div class="boxall" style="height: 260px;">
+                    <div style="margin-top: 10px;">
+                        <div class="boxall-title-info">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                项目总个数(个)
+                            </div>
+                            <div class="box-all-cont">
+                                95个
+                            </div>
+                        </div>
+                        <div class="boxall-title-info">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                项目总投资金额(亿元)</div>
+                            <div class="box-all-cont">
+                                1363.47亿元
+                            </div>
+                            <div
+                                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                                占全省投资总额 <span style="color: yellow;">20</span>位</div>
+                        </div>
+                        <div class="boxall-title-info">
+                            <div style="color: #fff;margin-bottom: 0.4vw;" class="boxall-title-info-title">
+                                投资总进度(%)</div>
+                            <div class="box-all-cont">
+                                1%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="boxall clearfix" style="height: 430px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg">
+                            </div>项目规模
+                        </div>
+                        <div class="allnav" id="fb1"></div>
+                        <div class="boxfoot">
+
+                        </div>
+                    </div>
+                    <div class="boxall clearfix" style="height: 430px;width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg"></div>
+                            项目阶段
+                        </div>
+                        <div class="allnav" id="fb2"></div>
+                        <div class="boxfoot">
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: space-between;">
+                    <div class="boxall boxall-exp clearfix" style="height: 940px;    width: 48%;">
+                        <div class="alltitle">
+                            <div class="block-bg">
+                            </div> 项目分布
+                        </div>
+                        <div class="allnav" id="fb3"></div>
+                        <div class="boxfoot">
+
+                        </div>
+                    </div>
+                    <div class="boxall boxall-exp clearfix" style="height: 940px;overflow: hidden;width: 48%;">
+                        <div class="alltitle" style="font-size: 46px;">
+                            <div class="block-bg"></div>
+                            主要项目
+                        </div>
+                        <div>
+                            <ul class="myul" style="width: 100%;">
+                                <li>项目名称</li>
+                                <li>归属企业</li>
+                                <li>总投资(万元)</li>
+                                <!-- <li>项目进度</li> -->
+                            </ul>
+                        </div>
+                        <div class="allnav setscrollbox scroll" id="fb4">
+                            <table rules=none>
+                                <tbody class="settbody">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="boxfoot">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="back"></div>
+
+        <script type="text/javascript" src="../js/china.js"></script>
+        <script type="text/javascript" src="../js/area_echarts.js"></script>
+        <script src="../js/jquery.js"></script>
+        <script src="../js/i5scroll.js"></script>
+        <script>
+            $.ajax({
+                type: "GET",
+                url: "http://139.9.150.10:9876/dv/bigScreen/getTargetData",
+                success: function (res) {
+                    $(".boxall-title-info1 .boxall-title-info-title").html(res.data[0].targetName);
+                    $(".boxall-title-info1 .box-all-cont").html(res.data[0].value);
+                    $(".boxall-title-info2 .boxall-title-info-title").html(res.data[1].targetName);
+                    $(".boxall-title-info1 .box-all-cont").html(res.data[1].value);
+                    $(".boxall-title-info3 .boxall-title-info-title").html(res.data[2].targetName);
+                    $(".boxall-title-info1 .box-all-cont").html(res.data[2].value);
+
+
+                }
+            });
+        </script>
+        <script>
+            $(".scroll").i5Scroll();
+        </script>
+</body>
+
+</html>

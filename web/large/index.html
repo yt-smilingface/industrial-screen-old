@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=3840, user-scalable=no" />
+
+  <title>index</title>
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <link rel="stylesheet" href="css/comon0.css">
+</head>
+<script>
+  $(window).load(function () {
+    $(".loading").fadeOut()
+  })
+
+  /****/
+  $(document).ready(function () {
+    var whei = $(window).width()
+    $("html").css({
+      fontSize: whei / 20
+    })
+    $(window).resize(function () {
+      var whei = $(window).width()
+      $("html").css({
+        fontSize: whei / 20
+      })
+    });
+  });
+</script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<!-- <script type="text/javascript" src="js/echarts.all.js"></script> -->
+
+<script language="JavaScript" src="js/js.js"></script>
+<script src="js/autoPlay.js"></script>
+
+<body>
+  <div class="canvas" style="opacity: .2">
+    <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>
+  </div>
+  <div class="loading">
+    <div class="loadbox"> <img src="picture/loading.gif"> 页面加载中... </div>
+  </div>
+  <div class="head" style="position: relative;">
+    <div class="head-ullist">
+      <ul>
+        <li class="data">
+          <img src="./images/titleborder.png" alt="" style="width:320px;height:100px;">
+          <span class="head-ullist-span"> 数据资产总览
+          </span>
+
+        </li>
+        <li class="active economy">
+          <img src="./images/bgc2.png" alt="" style="width:320px;height:100px;">
+          <span class="head-ullist-span"> 宏观经济总览 </span>
+        </li>
+        <li class="industry">
+          <img src="./images/titleborder.png" alt="" style="width:320px;height:100px;">
+          <span class="head-ullist-span"> 工业经济监测
+          </span>
+        </li>
+        <li class="industry-overview">
+            <img src="./images/titleborder.png" alt="" style="width:320px;height:100px;">
+            <span class="head-ullist-span"> 产业总览
+            </span>
+        </li>
+        <li class="project">
+          <img src="./images/titleborder.png" alt="" style="width:320px;height:100px;">
+          <span class="head-ullist-span"> 项目总览
+          </span>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="head-title">
+      <img src="./images/title.png" alt="" srcset="">
+    </div>
+
+    <div class="weather">
+      <img src="./images/time.png" style="width: 1269.7px;height: 268px;" alt="">
+      <span id="showTime"></span>
+      <span style="position: absolute;right: -100px;top: 60px;" id="weekdays">星期二</span>
+
+    </div>
+
+
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000); //開始运行
+      function time() {
+        clearTimeout(t); //清除定时器
+        date = new Date();
+        var YY = date.getFullYear();
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours());
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
+        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        document.getElementById("showTime").innerHTML = YY + "/" + MM + "/" + DD + "</br>" + hh + ":" + mm + ":" + ss;
+        t = setTimeout(time, 1000); //设定定时器，循环运行  
+        var days = date.getDay();
+        switch (days) {
+          case 1:
+            days = '星期一';
+            break;
+          case 2:
+            days = '星期二';
+            break;
+          case 3:
+            days = '星期三';
+            break;
+          case 4:
+            days = '星期四';
+            break;
+          case 5:
+            days = '星期五';
+            break;
+          case 6:
+            days = '星期六';
+            break;
+          case 0:
+            days = '星期日';
+            break;
+
+
+        }
+        document.querySelector('#weekdays').innerHTML = days;
+      }
+    </script>
+
+
+  </div>
+  <div class="mainbox">
+    <ul class="clearfix">
+      <li>
+        <div class="boxall" style="height: 260px;">
+          <div style="margin-top: 0.2vh;">
+            <div class="boxall-title-info">
+              <div style="color: #fff;margin-bottom: 0.4vw;">
+                1-12月累计GDP
+              </div>
+              <div class="box-all-cont">
+                24521.90<span style="color: #fff;font-size: 0.5vw;">亿元</span>
+              </div>
+              <div
+                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                同比增速
+                <span style="color: yellow;">+4%</span> </div>
+            </div>
+            <div class="boxall-title-info">
+              <div style="color: #fff;margin-bottom: 0.4vw;">
+                1-12月固定资产投资增速</div>
+              <div class="box-all-cont">
+                 7.7%
+              </div>
+              <div
+                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+
+                全国排名
+                <span style="color: yellow;">8</span>
+                位</div>
+            </div>
+            <div class="boxall-title-info">
+              <div style="color: #fff;margin-bottom: 0.4vw;">
+                1-12月社会消费增速</div>
+              <div class="box-all-cont">
+                -3.6%
+              </div>
+              <div
+                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                全国排名第
+                <span style="color: yellow;">15</span>
+                位</div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+          <div class="boxall clearfix" style="height: 730px;width: 48%;margin-bottom: 1vh;">
+            <div class="alltitle">
+              <div class="block-bg">
+              </div> 云南省地区生产总值
+            </div>
+            <div class="allnav" id="echart1"></div>
+          </div>
+          <div class="boxall clearfix" style="height: 730px;width: 48%;">
+            <div class="alltitle">
+              <div class="block-bg"></div>
+              地区生产总值增速对比
+            </div>
+            <div class="allnav" id="echart2"></div>
+            <div class="boxfoot" style="height: 200px;width: 100px;">
+
+            </div>
+          </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+          <div class="boxall clearfix" style="height: 730px;width: 48%;">
+            <div class="alltitle">
+              <div class="block-bg">
+              </div> 云南省固定资产投资
+            </div>
+            <div class="allnav" id="echart4" style="margin-bottom: 100px;"></div>
+            <div class="boxfoot">
+
+            </div>
+          </div>
+          <div class="boxall clearfix" style="height: 730px;width: 48%;">
+            <div class="alltitle">
+              <div class="block-bg"></div>
+              <!-- 云南省社会消费品零售总额增速 -->
+              社会消费品零售总额增速
+            </div>
+            <div class="allnav" id="echart5"></div>
+            <div class="boxfoot">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div style="color: #fff;font-size: 1.6vw;font-weight: 800;margin-left: 3vw;">云南省宏观经济地图
+        </div>
+        <div class="map">
+          <div style="margin:auto; color:#fff;position: absolute;top:1vh;left: 3vw;font-size: 50px;">
+            <div style="width:60px;height:30px;background:#B3DEF1;display: inline-block;"></div> 1-12月累计GDP
+          </div>
+          <div class="map1"><img src="picture/lbx.png"></div>
+          <div class="map2"><img src="picture/jt.png"></div>
+          <div class="map3">
+            <img style="width: 1480px;margin-left: -100px;	transform: scale(1.6);opacity: 0.3;" src="picture/map.png">
+          </div>
+          <div class="map4" id="map_2"></div>
+
+        </div>
+      </li>
+      <li>
+        <div class="boxall" style="height: 260px;">
+          <div style="margin-top: 10px;">
+            <div class="boxall-title-info">
+              <div style="color: #fff;margin-bottom: 0.4vw;">云南省企业</div>
+              <div class="box-all-cont">
+                3,535,151
+              </div>
+              <div
+                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+              </div>
+            </div>
+            <div class="boxall-title-info">
+              <div style="color: #fff;margin-bottom: 0.4vw;">云南省企业（不含个体户） </div>
+              <div class="box-all-cont">
+                830,930
+              </div>
+              <div
+                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                占比全省企业
+                <span style="color:yellow">24%</span>
+              </div>
+            </div>
+            <div class="boxall-title-info">
+              <div style="color: #fff;margin-bottom: 0.4vw;">
+                云南省工业企业</div>
+              <div class="box-all-cont">
+                49223
+              </div>
+              <div
+                style="color:#00EAFF;text-align: right;margin-right: 0.5vw;font-size: 0.5vw;line-height: 0.5vw;margin-top: 0.1vw;">
+                占比全省企业
+
+                <span style="color:yellow">6% </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+          <div class="boxall clearfix" style="height: 730px;width: 48%;">
+            <div class="alltitle">
+              <div class="block-bg ">
+              </div>
+              <span class="settitle1">企业规模分布</span>
+            </div>
+            <div class="allnav" id="fb1"></div>
+            <div class="boxfoot">
+
+            </div>
+          </div>
+          <div class="boxall clearfix" style="height: 730px;width: 48%;">
+            <div class="alltitle">
+              <div class="block-bg"></div>
+              企业类型分布
+            </div>
+            <div class="allnav" id="fb2"></div>
+            <div class="boxfoot">
+            </div>
+          </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;">
+          <div class="boxall clearfix" style="height: 730px;width: 48%;">
+            <div class="alltitle">
+              <div class="block-bg">
+              </div> 科技型企业
+            </div>
+            <div class="allnav" id="fb3"></div>
+            <div class="boxfoot">
+
+            </div>
+          </div>
+          <div class="boxall clearfix" style="height: 730px;width: 48%;">
+            <div class="alltitle">
+              <div class="block-bg"></div>
+
+              <span class="settitle2">企业行业分布</span>
+            </div>
+            <div class="allnav" id="fb4"></div>
+            <div class="boxfoot">
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="back"></div>
+
+  <script type="text/javascript" src="js/china.js"></script>
+  <script type="text/javascript" src="js/area_echarts.js"></script>
+  <script src="./api/index.js
+  "></script>
+</body>
+
+</html>
